@@ -3,7 +3,7 @@ import { MemberModel } from "./member.model";
 
 const memberResolver = {
   Query: {
-    members: async (root, args) => {
+    members: async () => {
       return await MemberModel.find({});
     },
     member: async (root, args) => {
@@ -11,14 +11,14 @@ const memberResolver = {
     },
   },
   Mutation: {
-    addMember: async (root, args, { req }) => {
+    addMember: async (root, args) => {
       try {
         return await MemberModel.create(args.input);
       } catch (e) {
         throw new Error(e.message);
       }
     },
-    updateMember: async (root, args, { req }) => {
+    updateMember: async (root, args) => {
       try {
         return await MemberModel.findByIdAndUpdate(args.id, args.input, {
           new: true,
@@ -27,7 +27,7 @@ const memberResolver = {
         throw new Error(e.message);
       }
     },
-    deleteMember: async (root, args, { req }) => {
+    deleteMember: async (root, args) => {
       try {
         return await MemberModel.findByIdAndUpdate(
           args.id,
