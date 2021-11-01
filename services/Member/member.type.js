@@ -6,12 +6,13 @@ const MemberType = gql`
     firstname: String
     lastname: String
     birthdate: String
+    addresses:[Address]
   }
 
   input MemberInput {
-    firstname: String
-    lastname: String
-    birthdate: String
+    firstname: String!
+    lastname: String!
+    birthdate: String!
   }
 
   extend type Query {

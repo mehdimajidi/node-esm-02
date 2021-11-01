@@ -1,3 +1,4 @@
+import { AddressModel } from "../Address/address.model";
 import { MemberModel } from "./member.model";
 
 const memberResolver = {
@@ -41,9 +42,10 @@ const memberResolver = {
     },
   },
   Member: {
-    // timeStatus: async (root) => {
-    //   return checkStatusTime([root.startDate, root.finishDate]);
-    // },
+    addresses: async (root) => {
+      console.log(root)
+      return AddressModel.find({memberId:root._id})
+    },
   },
 };
 

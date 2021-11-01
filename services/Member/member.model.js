@@ -5,6 +5,7 @@ const { Schema } = mongoose;
 const memberSchema = new Schema({
   firstname: String,
   lastname: String,
+  age:Number,
   birthdate: String,
 });
 
